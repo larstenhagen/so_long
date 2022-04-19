@@ -1,5 +1,8 @@
 NAME = so_long
 FLAGS = -Wall -Werror -Wextra
+MLXFLAG = -lmlx -lXext -lX11
+PRINTF = printf/libftprintf.a
+MLX = mlx/libmlx.a
 
 SRC = so_long.c \
 
@@ -9,7 +12,7 @@ all : $(NAME)
 
 $(NAME) : $(SRC_O)
 	$(MAKE) -C ./printf
-	gcc $(FLAGS) $(SRC_O) printf/libftprintf.a -o ${NAME}
+	gcc $(FLAGS) $(SRC_O) $(PRINTF) $(MLX) $(MLXFLAG) -o ${NAME}
 
 clean:
 	rm -f $(SRC_O)
